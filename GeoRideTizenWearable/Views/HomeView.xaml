@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<w:CirclePage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:w="clr-namespace:Tizen.Wearable.CircularUI.Forms;assembly=Tizen.Wearable.CircularUI.Forms"
+    x:Class="GeoRideTizenWearable.Views.HomeView"
+    BackgroundColor="#232323">
+
+    <w:CirclePage.Content>
+        <w:CircleScrollView
+            BarColor="#ffad00"
+            Orientation="Vertical">
+
+            <AbsoluteLayout
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+
+                <StackLayout
+                    AbsoluteLayout.LayoutFlags="All"
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Vertical"
+                    IsVisible="{Binding StackLayoutUpdatedIsVisible}"
+                    VerticalOptions="CenterAndExpand">
+
+                    <Image
+                        Source="{Binding LockerImage}"
+                        HorizontalOptions="Center"
+                        HeightRequest="120" />
+
+                    <Button
+                        Text="{Binding ToggleButtonText}"
+                        Margin="0,15,0,0"
+                        BackgroundColor="#FFFFFF"
+                        TextColor="#232323"
+                        FontSize="Small"
+                        IsEnabled="{Binding IsEnabled}"
+                        Command="{Binding ToggleButtonCommand}"
+                        HorizontalOptions="CenterAndExpand" />
+
+                </StackLayout>
+
+                <StackLayout
+                    AbsoluteLayout.LayoutFlags="All"
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Vertical"
+                    IsVisible="{Binding StackLayoutErrorIsVisible}"
+                    VerticalOptions="CenterAndExpand">
+
+                    <Label
+                        Text="Impossible de récupérer l'état actuel du tracker."
+                        TextColor="#c7c7c7"
+                        HorizontalOptions="CenterAndExpand" />
+
+                    <Button
+                        Text="Réessayer"
+                        Margin="0,15,0,0"
+                        BackgroundColor="#FFFFFF"
+                        TextColor="#232323"
+                        FontSize="Small"
+                        IsEnabled="{Binding IsEnabled}"
+                        Command="{Binding RetryButtonCommand}"
+                        HorizontalOptions="CenterAndExpand" />
+
+                </StackLayout>
+
+                <StackLayout
+                    IsVisible="{Binding IsBusy}"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+
+                    <ActivityIndicator
+                        IsRunning="{Binding IsBusy}"
+                        Color="#ffad00" />
+
+                </StackLayout>
+    
+            </AbsoluteLayout>
+        </w:CircleScrollView>
+    </w:CirclePage.Content>
+
+    <w:CirclePage.ToolbarItems>
+        <w:CircleToolbarItem
+            Command="{Binding SettingsCommand}"
+            Icon="settings.png"
+            Text="Modifier le tracker" />
+        <w:CircleToolbarItem
+            Command="{Binding LogoutCommand}"
+            Icon="logout.png"
+            Text="Se déconnecter" />
+    </w:CirclePage.ToolbarItems>
+</w:CirclePage>

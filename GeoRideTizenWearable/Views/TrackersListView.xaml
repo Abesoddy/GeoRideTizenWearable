@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<w:CirclePage
+    x:Class="GeoRideTizenWearable.Views.TrackersListView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:w="clr-namespace:Tizen.Wearable.CircularUI.Forms;assembly=Tizen.Wearable.CircularUI.Forms"
+    RotaryFocusObject="{x:Reference trackersList}"
+    BackgroundColor="#232323" >
+
+    <w:CirclePage.Content>
+        <AbsoluteLayout
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+
+            <StackLayout
+                IsVisible="{Binding TrackersListIsVisible}"
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Vertical"
+                VerticalOptions="FillAndExpand">
+
+                <w:CircleListView
+                    x:Name="trackersList"
+                    BarColor="#ffad00"
+                    ItemSelected="TrackerSelected"
+                    BackgroundColor="#232323"
+                    ItemsSource="{Binding Trackers}">
+          
+                    <w:CircleListView.Header>
+                        <x:String>Trackers</x:String>
+                    </w:CircleListView.Header>
+           
+                    <w:CircleListView.ItemTemplate>
+                        <DataTemplate>
+
+                            <ViewCell>
+                                <StackLayout
+                                    HeightRequest="120"
+                                    Orientation="Horizontal"
+                                    BackgroundColor="Transparent"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand" >
+
+                                    <Label
+                                        Text="{Binding TrackerName}"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand"
+                                        FontSize="Medium"
+                                        TextColor="#c7c7c7" />
+                                </StackLayout>
+                            </ViewCell>
+
+                        </DataTemplate>
+                    </w:CircleListView.ItemTemplate>
+
+                    <w:CircleListView.HeaderTemplate>
+                        <DataTemplate>
+                            <Label
+                                w:CircleListView.CancelEffect="True"
+                                FontAttributes="Bold"
+                                FontSize="Large"
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding .}"
+                                TextColor="#FFFFFF" />
+                        </DataTemplate>
+                    </w:CircleListView.HeaderTemplate>
+            
+                </w:CircleListView>
+
+            </StackLayout>
+
+            <StackLayout
+                IsVisible="{Binding IsBusy}"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+
+                <ActivityIndicator
+                    IsRunning="{Binding IsBusy}"
+                    Color="#ffad00" />
+
+            </StackLayout>
+    
+        </AbsoluteLayout>
+    </w:CirclePage.Content>
+</w:CirclePage>
