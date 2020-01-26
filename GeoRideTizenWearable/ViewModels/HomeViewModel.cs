@@ -253,6 +253,9 @@ namespace GeoRideTizenWearable.ViewModels
                     // Remove all properties in secure storage
                     SecureStorage.RemoveAll();
 
+                    // Remove preferences data
+                    Preferences.Remove("rememberMe");
+
                     Application.Current.MainPage = new LoginView();
                     popup.Dismiss();
                 })
