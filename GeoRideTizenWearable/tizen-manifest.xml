@@ -3,7 +3,7 @@
     xmlns="http://tizen.org/ns/packages" 
     api-version="4" 
     package="org.tizen.example.GeoRideTizenWearable" 
-    version="1.0.0">
+    version="1.0.1">
     
     <profile name="wearable" />
     <ui-application 
